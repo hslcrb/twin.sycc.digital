@@ -47,3 +47,7 @@ blender -b models/sycc.blend -t 4 -P blender/scripts/render_still.py -- --waypoi
 ```
 
 위 명령은 저장된 모델을 다시 쓰지 않고 지정 시점에서 PNG만 생성합니다.
+
+### M3의 관찰 기반 실내 재료
+
+[현장 사진 출처](docs/RECENT-REFERENCES.ko.md)와 [M3 재료 개발기](docs/M3-MATERIALS.ko.md)를 추가했습니다. 붉은 계열 객석, 목재색 측벽, 슬랫 후벽을 재현하고 공연장과 유리 로비의 공간 경계를 분리했습니다. 재료 종류와 치수는 근사이며, GLB 색과 투명도는 실측 광학값이 아닙니다. M1·M2 수치 및 파일은 이전 커밋의 기록입니다.

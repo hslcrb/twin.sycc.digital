@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "path": "models/sycc.blend",
+      "bytes": 331636,
+      "sha256": "56dd0e3cd0ceefa005a81a168e8d252e1c7955220ab2948b78c9d628cb8aced7"
+    },
+    {
+      "path": "public/models/sycc.glb",
+      "bytes": 1350228,
+      "sha256": "8ffb02030916644012c14343a3207335c2df91cb33d35d34a156053d253170ea"
+    },
+    {
+      "path": "blender/scripts/build_sycc_m3.py",
+      "bytes": 15560,
+      "sha256": "8e80e2aa47008800f7fa82bd2ee6c9d42217b7789d4f0af46e48649db6f1fe2c"
+    },
+    {
+      "path": "blender/scripts/verify_sycc_m3.py",
+      "bytes": 3169,
+      "sha256": "cf7306c4fdff4e020d9ae3a8097d9f52bf124062233c0bd4f54ec1245441eca5"
+    },
+    {
+      "path": "docs/model-manifest.json",
+      "bytes": 2102,
+      "sha256": "cbc6be585a6b1b98d88cfa959f72ecebfdd669dc9eea2dea274be4dd8c64579c"
+    },
+    {
+      "path": "docs/model-verification.json",
+      "bytes": 515,
+      "sha256": "470d34e2a8d9d31f3b9fdc76eb29057c7a13abaa7f7df0af763a0d8730c80683"
+    },
+    {
+      "path": "docs/M3-MATERIALS.ko.md",
+      "bytes": 3989,
+      "sha256": "7ab610eca454301f2d6ffbe0f56df99cf8f652c7ccaae4f92dd874de80d5c5a5"
+    }
+  ],
+  "renders": [
+    "renders/m3-audience.png",
+    "renders/m3-exterior.png"
+  ],
+  "exclude": [
+    "local-history/",
+    "models/sycc.blend1"
+  ],
+  "note": "Native Blender5.3; M2 historical scripts preserved. No remote writes."
+}

@@ -1,15 +1,18 @@
 {
-  "phase": "M1 blockout + M2 historical seat topology",
+  "provenance": "first-party",
+  "license": "CC-BY-4.0",
+  "attribution": "twin.sycc.digital contributors",
+  "phase": "M3 photo-informed auditorium materials and shell separation",
   "modelDimensionStatus": "All model distances approximate, metres for navigation only; no survey",
   "native": {
     "path": "models/sycc.blend",
-    "bytes": 323840,
-    "sha256": "290d40aa1cebd9cada23beb52f3fa3eeac813ef4a77106fe02af1e32fcffdeb2"
+    "bytes": 331636,
+    "sha256": "56dd0e3cd0ceefa005a81a168e8d252e1c7955220ab2948b78c9d628cb8aced7"
   },
   "glb": {
     "path": "public/models/sycc.glb",
-    "bytes": 1268656,
-    "sha256": "bfc49c4eade9bc081956207683ed171aaef950fee226120fe0bd931ff8dec342"
+    "bytes": 1350228,
+    "sha256": "8ffb02030916644012c14343a3207335c2df91cb33d35d34a156053d253170ea"
   },
   "waypoints": [
     {
@@ -86,8 +89,8 @@
       "name": "Waypoint_OnnuriBalcony",
       "eyeGLTF": [
         39,
-        8.6,
-        -17.3
+        9.3,
+        -19.7
       ],
       "targetGLTF": [
         39,
@@ -97,10 +100,7 @@
       "label": "온누리 발코니 · 2017 도면 기반 근사"
     }
   ],
-  "objects": 28,
-  "meshObjects": 19,
-  "triangles": 23808,
-  "provenance": "first-party",
-  "license": "CC-BY-4.0",
-  "attribution": "twin.sycc.digital contributors"
+  "objects": 30,
+  "meshObjects": 21,
+  "triangles": 25266
 }
