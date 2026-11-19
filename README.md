@@ -50,7 +50,7 @@ flowchart LR
 
 ## 운영 배포
 
-온전히 정적 파일을 배포합니다. GitHub `main`을 Cloudflare Pages에 연결하고, `npm ci && npm run build` 결과인 `dist/`를 제공합니다. 운영 주소: [twin.sycc.rhee.life](https://twin.sycc.rhee.life).
+온전히 정적 파일을 배포합니다. GitHub `main`을 Cloudflare Pages에 연결하고, `npm ci && npm run build` 결과인 `dist/`를 제공합니다. 운영 주소: [twin.sycc.rhee.life](https://twin.sycc.rhee.life). [배포·검증 개발기](docs/RELEASE.ko.md)
 
 ## 로컬 실행과 모델 편집
 
