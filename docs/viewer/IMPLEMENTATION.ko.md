@@ -74,3 +74,15 @@ package-lock.json은 공식 npm 설치 결과다. node_modules/dist/.npm-cache�
 라벨 함수는 별도 작은 모듈로 분리했다. 처음에는 기존 policy 모듈에 넣었으나 초기 entry가 GLB 검증 코드까지 함께 가져오는 빌드 변화가 관찰되어 분리했다. 렌더러·검증 코드는 지연 viewer에 남는다. DPR 상한, idle frame 0, context loss 및 종료 처리에는 변화가 없다.
 
 검증 모델은 M2 1,268,656바이트, SHA256 `bfc49c4eade9bc081956207683ed171aaef950fee226120fe0bd931ff8dec342`이다. 실제 GLTFLoader bounds/waypoint 검사 포함 11/11 테스트가 skip 없이 통과했고 strict typecheck 포함 production build도 통과했다. root의 모델 검사 도구 회귀도 통과했다. 실제 브라우저 screenshot 및 모바일 GPU 실측은 이번 수정에서 수행하지 않았으므로 CSS 계약·파서·빌드 검증과 구분한다. M3는 아직 이 결과에 포함하지 않는다. 산출물 크기는 동봉 build.txt에서 확인하며 500KB viewer 경고를 그대로 유지했다.
+
+## M4 로비 보행 MVP
+
+이번 보행은 온누리 로비의 작은 평면 안전영역만 대상으로 한다. 모델 작성자가 GLB의 `WalkRegion_OnnuriLobby` node extras `walkRegion`에 넣은 `aabb-plane / bounded-preview` 계약을 읽는다. x34..44, z-13..-6, 바닥 y0.28, 눈높이1.65이며 시작점은 [39,1.93,-10]이다. 메타데이터가 없는 이전 모델에서는 보행 버튼이 나타나지 않고 기존 orbit 탐색이 유지된다. 웹에 새 바닥이나 벽 geometry를 만들지 않는다.
+
+사용자는 '로비 걸어보기 · 근사'를 누르고 WASD/방향키 또는 화면의 앞/뒤/좌/우 버튼으로 이동한다. canvas 드래그는 시선 yaw/pitch만 바꾸며 pitch를 제한한다. 전체 보기나 waypoint를 선택하면 보행이 종료되고 orbit이 돌아온다. 이동속도는 초당1.7모델미터, 대각선 입력은 정규화하고 한 프레임 dt는50ms로 제한한다. 카메라 위치는 안전영역 경계에 clamp하고 눈높이는 고정한다. 따라서 이 모드에서는 영역 밖으로 나가거나 아래로 떨어지지 않는다. 안전영역은 작성자가 벤치·벽·좌석에서 여유 있게 축소한 구간이다. 일반적인 임의 메쉬 충돌엔진, 계단, 문 열기, 객석 통로 이동은 구현하지 않았으며 전체 실내 보행 완료라고 표시하지 않는다.
+
+이동키/버튼을 누르는 동안만 이동 RAF를 예약한다. 입력이 없으면 다음 tick에서 멈추고 별도의 영구 loop는 없다. 기존 렌더 scheduler는 이동에 필요한 frame만 병합한다. window blur/hidden, 모드 종료, controller dispose 시 held keys와 touch pointers, 대기 RAF를 비운다. pointercancel/lostpointercapture도 이동을 해제한다. 버튼은44px 이상이며 실제 button이므로 Enter/Space 누름도 지원한다. context loss나 재시도 시 controller listeners도 함께 제거한다.
+
+검증은 실제 controller에 EventTarget 기반 입력과 결정적 RAF queue를 연결하여 수행했다. release/blur/hidden/stop/dispose 후 움직임이 남지 않는지, touch 취소, 정상 이동을 확인했다. 별도 계산검사에서 대각선 속도, 긴 dt 제한, 10,000개 이동 후 경계와 눈높이 보존을 확인했다. 실제 M4 GLB를 Three GLTFLoader로 파싱하고 안전영역 5×5지점에서 floor+0.1부터 하향 raycast하여 바닥 높이와 맞는지 확인했다. 이는 실제 scene geometry 검사이나 GPU 브라우저 보행 조작 검증이나 현장 실측 증거는 아니다.
+
+M4 GLB는1,470,400바이트, SHA256 `76daa41eddbf9d29608a8fce565899ba68960f74549393bc6a3eb545cf33769a`다. 보행코드와 메타데이터 도입으로 이전 M2 결과와 구분한다. 소스 파일은 walk.ts(계약·계산), walk-controller.ts(입력·수명), 기존 viewer/main/HTML/CSS 연결이며 모델은 별도 모델 담당자가 작성했다. 원격 커밋·배포는 이 작업자가 하지 않는다.

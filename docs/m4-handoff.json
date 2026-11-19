@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "models/sycc.blend",
+      "bytes": 345503,
+      "sha256": "303b570d5bb4d55d274e3cb57a20ba00c76d5a5a279bfac7a1a568f2a68ee14a"
+    },
+    {
+      "path": "public/models/sycc.glb",
+      "bytes": 1470400,
+      "sha256": "76daa41eddbf9d29608a8fce565899ba68960f74549393bc6a3eb545cf33769a"
+    },
+    {
+      "path": "blender/scripts/build_sycc_m4.py",
+      "bytes": 17491,
+      "sha256": "96b04db2a0ece1d7e3b87997b6b9aad1b18a2343d6b528ebd0061cae61b9a7b1"
+    },
+    {
+      "path": "blender/scripts/verify_sycc_m4.py",
+      "bytes": 4604,
+      "sha256": "9cca525240e7b895082b6f0b4268e9466e99954f9cc3205cd005e1c50d7a81e1"
+    },
+    {
+      "path": "blender/scripts/render_m4_front.py",
+      "bytes": 362,
+      "sha256": "712e66df4b5569e8328243d37eb54ad8cf3f0a2420a256f1a5574c2e9ecdba75"
+    },
+    {
+      "path": "docs/model-manifest.json",
+      "bytes": 2088,
+      "sha256": "8f03690df028f337677e8c3c3db1f8ef8792715be2834e1f1e30e82c1d800053"
+    },
+    {
+      "path": "docs/model-verification.json",
+      "bytes": 898,
+      "sha256": "5fa8f7a40ff30bfb55eb70dac8ed630247d21182ec470e6d47338088ba4a062a"
+    },
+    {
+      "path": "docs/M4-EXTERIOR.ko.md",
+      "bytes": 2678,
+      "sha256": "51caf20797a38fa1777dc4fba98e826be3b59b0651cac9ce9fa6230b567c820a"
+    }
+  ],
+  "renders": [
+    "renders/m4-front.png"
+  ],
+  "exclude": [
+    "local-history/",
+    "models/sycc.blend1"
+  ],
+  "sourceM3Commit": "33db6f7d5fea9ac5a259250605b9dc639f3bf7a6",
+  "nativeBlender": "5.3",
+  "remoteWrites": false
+}

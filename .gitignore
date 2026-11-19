@@ -5,3 +5,5 @@ dist/
 
 *.blend[1-9]
 .cache/
+__pycache__/
+local-history/

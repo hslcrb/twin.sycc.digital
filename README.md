@@ -1,53 +1,65 @@
 # 수원청소년문화센터 디지털 트윈
 
-수원시 팔달구 권광로 293의 **수원청소년문화센터와 온누리아트홀**을 중심으로 외부 광장과 공개 내부 공간을 재현하는 독립 오픈소스 프로젝트입니다. 수원시나 시설 운영 기관의 공식 서비스 또는 실측도면이 아닙니다.
+**수원의 청소년문화센터를, 방문하기 전에 한 번 둘러보는 비공식 3D 지도.**
 
-## 범위와 현재 단계
+제가 해 온 3D 제작 경험에서 영감을 얻었습니다. 학교가 12월 초 이곳으로 교육을 받으러 갈 예정이라, 처음 오는 사람도 광장과 공연장 입구를 미리 보고 어디로 이동하는지 감을 잡을 수 있는 공간을 만들고 싶었습니다. 제 고향 수원의 청소년 시설을 알리는 마음도 담았습니다. 나중에는 대중교통에서 내려 시설까지 오는 길도 연결해 보고 싶습니다.
 
-먼저 외부 배치, 주요 시설 덩어리와 공연장 공개 관람 영역을 검증할 수 있는 첫 모델로 시작합니다. 사진·도면을 대조하여 근거가 생긴 구역부터 세부 지오메트리, 마감재, 동선, 저사양 웹 렌더를 정밀하게 개선합니다. 근거 없는 치수·층별 배치, 실측되지 않은 최신 시설, 미완료 실내 공간을 정확히 재현했다고 표시하지 않습니다.
+> 수원시·수원시청소년청년재단의 공식 서비스가 아닙니다. **미리 둘러보는 참고용**입니다. 실제 개방 여부, 수업 장소, 접근 가능한 길, 안전 대피는 시설의 공식 안내를 따르세요. [시설 공식 안내](https://www.syf.or.kr/web/page.do?menuIdx=360)
 
-- [상세 마일스톤 및 구현 계획](docs/MILESTONES.ko.md)
-- [조사 출처와 재배포 기준](docs/SOURCES.ko.md)
-- [기여 가이드](CONTRIBUTING.md)
-- [코드 라이선스(MIT)](LICENSE) · [모델·텍스처와 외부 자료의 라이선스](ASSET-LICENSES.md)
+## 지금 볼 수 있는 것
 
-## 구조
+전면 광장의 첫 골격, 연수동과 온누리아트홀 외관, 로비와 공연장 객석·무대를 한 장면으로 연결합니다. 위치 버튼으로 공간을 옮겨 볼 수 있고, **로비 걸어보기 · 근사**를 누르면 모델에 표시된 로비 일부에서 움직일 수 있습니다. 공연장 객석은 시점 버튼으로만 이동합니다. 온누리의 1·2층 좌석은 2017년 객석도의 번호석 **519개와 휠체어 공간 6곳**을 반영했습니다. 정확한 현재 치수·배치·마감과 보행 가능 범위는 [검증 기록](docs/FIRST-PASS.ko.md)과 [출처 장부](docs/SOURCES.ko.md)에 구분해 놓았습니다.
 
-**단일 Blender 마스터 → GLB → TypeScript/Three.js 뷰어.** 건물과 부지 모델의 편집 원본은 Blender 한 파일입니다. 뷰어는 같은 장면의 파생 산출물을 읽으며, 브라우저에서 다른 건물을 그려 대체하지 않습니다.
+## 스틸컷
 
-## 로컬 실행
+![낮은 삼각박공과 중앙 관통로, 광장 원주를 정면에서 본 렌더](docs/stills/06-campus-front.png)
 
-Node.js 22.12 이상, npm 필요. Blender 원본과 웹용 GLB는 저장소에 있으며 기본 웹 빌드에서 Blender를 새로 실행할 필요는 없습니다.
+각 이미지는 실제 Blender 모델에서 렌더한 기록입니다. 완성 사진이 아니며 해당 모델 단계의 차이를 보여 줍니다.
 
-```sh
-npm ci
-npm run dev
-npm run typecheck
-npm test
-npm run test:model
-npm run inspect:model
-npm run build
+|부지와 정면|온누리 객석|
+|---|---|
+|![광장과 전면 건물 골격](docs/stills/01-campus-overview.png)|![1층과 발코니 좌석 구획 연구](docs/stills/03-onnuri-seating-study.png)|
+|![온누리 유리 입구 근접](docs/stills/02-onnuri-entry.png)|![현장 사진을 참고한 붉은 좌석과 목재 측벽](docs/stills/04-onnuri-materials.png)|
+
+[전체 스틸컷과 변경 설명](docs/STILLS.ko.md)
+
+## 어떻게 만들었나
+
+```mermaid
+flowchart LR
+    A["공식 자료와 현장 사진<br/>알 수 있는 것부터 확인"] --> B["Blender 원본 한 파일<br/>건물·객석·지형"]
+    B --> C["GLB 한 파일<br/>웹에서 읽기 좋게 내보내기"]
+    C --> D["웹 뷰어<br/>둘러보기와 지원 구역 체험"]
+    classDef evidence fill:#fff2ba,stroke:#a77814,color:#231700;
+    classDef model fill:#d9eaff,stroke:#3166a1,color:#122e4b;
+    classDef web fill:#d7f6df,stroke:#2c8250,color:#103222;
+    class A evidence;
+    class B,C model;
+    class D web;
 ```
 
-Blender에서 `models/sycc.blend`를 열어 원본을 확인합니다. 렌더러의 파일 진입점은 `public/models/sycc.glb` 하나입니다. 관측용 카메라 바로가기는 모델에 포함된 지점이며 검증된 보행 경로나 운영 시설 안내가 아닙니다.
+그림의 모든 건물은 **Blender 한 파일**에서 나옵니다. 웹은 그 모델을 읽어 보여 줄 뿐, 없는 건물을 따로 그려서 채우지 않습니다. 이 사이트는 데이터베이스나 사용자 로그인 없는 **정적 웹**으로 구성합니다.
 
-## 첫 모델 / M1 + M2 초기 패스
+## 문서
 
-- [Blender 모델 개발기](docs/MODEL-PHASES.ko.md) · [뷰어 개발기](docs/viewer/IMPLEMENTATION.ko.md)
-- [모델 매니페스트와 해시](docs/model-manifest.json) · [객석도 판독](docs/seat-plan-derived.json)
-- 첫 모델에는 관찰 기반 외부 골격과 온누리아트홀의 근사 전실·무대·객석이 포함됩니다. 2017년 공개 객석도를 기준으로 일반 번호석 519개와 휠체어 위치 6곳을 표기합니다. 현재 시설 치수나 관람 동선의 인증 자료가 아닙니다.
-- 전체 GLB는 1,268,656바이트입니다. 기본 장면 23,808개 삼각형과 19개 드로 프리미티브는 GLB 구조를 분석한 수이며 실제 화면 드로콜·모바일 FPS가 아닙니다.
+- [처음 오는 분을 위한 쉬운 이용 안내](docs/GUIDE.ko.md)
+- [일을 나누어 진행하는 상세 계획](docs/MILESTONES.ko.md) · [첫 통합 개발기](docs/FIRST-PASS.ko.md)
+- [공식 자료와 객석도 읽은 결과](docs/SOURCES.ko.md) · [현장 사진 관찰](docs/RECENT-REFERENCES.ko.md)
+- [Blender 모델 개발기](docs/MODEL-PHASES.ko.md) · [M3 재료 개발기](docs/M3-MATERIALS.ko.md) · [뷰어 개발기](docs/viewer/IMPLEMENTATION.ko.md)
+- [기여 안내](CONTRIBUTING.md) · [MIT 라이선스](LICENSE) · [모델·텍스처 라이선스](ASSET-LICENSES.md)
 
-### 모델 편집과 스틸 렌더
+## 운영 배포
 
-네이티브 파일은 **Blender 5.3.0**에서 제작·검증했습니다. Blender 4.3.2에서는 이 버전의 압축 원본을 정상적으로 열 수 없었으므로 5.3에서 편집하세요. GLB 뷰어는 Blender 설치 없이 실행할 수 있습니다.
+온전히 정적 파일을 배포합니다. GitHub `main`을 Cloudflare Pages에 연결하고, `npm ci && npm run build` 결과인 `dist/`를 제공합니다. 운영 주소: [twin.sycc.rhee.life](https://twin.sycc.rhee.life).
+
+## 로컬 실행과 모델 편집
+
+Node.js 22.12 이상과 npm이 필요합니다. `npm ci`로 의존성을 설치하고 `npm run dev`로 웹을 엽니다. `npm test`, `npm run test:model`, `npm run build`로 확인할 수 있습니다.
+
+네이티브 원본 `models/sycc.blend`는 **Blender 5.3.0**으로 제작·확인했습니다. Blender 4.3.2는 이 파일을 열지 못했습니다. 웹용 `public/models/sycc.glb`를 볼 때는 Blender가 필요하지 않습니다.
 
 ```sh
 blender -b models/sycc.blend -t 4 -P blender/scripts/render_still.py -- --waypoint Overview --out renders/recheck.png --width 900 --samples 8
 ```
 
-위 명령은 저장된 모델을 다시 쓰지 않고 지정 시점에서 PNG만 생성합니다.
-
-### M3의 관찰 기반 실내 재료
-
-[현장 사진 출처](docs/RECENT-REFERENCES.ko.md)와 [M3 재료 개발기](docs/M3-MATERIALS.ko.md)를 추가했습니다. 붉은 계열 객석, 목재색 측벽, 슬랫 후벽을 재현하고 공연장과 유리 로비의 공간 경계를 분리했습니다. 재료 종류와 치수는 근사이며, GLB 색과 투명도는 실측 광학값이 아닙니다. M1·M2 수치 및 파일은 이전 커밋의 기록입니다.
+위 명령은 모델을 덮어쓰지 않고 PNG만 만듭니다.

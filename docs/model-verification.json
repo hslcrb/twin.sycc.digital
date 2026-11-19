@@ -1,8 +1,8 @@
 {
   "pass": true,
-  "nativeMeshes": 21,
-  "glbMeshes": 21,
-  "trianglesBoth": 25266,
+  "nativeMeshes": 23,
+  "glbMeshes": 23,
+  "trianglesBoth": 27353,
   "numberedSeatGeometryCount": 519,
   "wheelchairClearSpaceGeometryCount": 6,
   "waypointParity": [
@@ -15,5 +15,19 @@
   ],
   "embeddedExternalImages": 0,
   "materials": 14,
-  "scope": "Export contract only, not survey accuracy, walkability, current facility match or browser FPS."
+  "scope": "Export contract only, not survey accuracy, walkability, current facility match or browser FPS.",
+  "centralPassageProbe": {
+    "x": 17.5,
+    "lowZ": 2,
+    "lowClear": true,
+    "highZ": 8,
+    "highHit": true,
+    "scope": "One model-space line only; not walkability certification"
+  },
+  "boundedLobbyProbe": {
+    "downwardSamples": 25,
+    "floorZBlender": 0.28,
+    "pass": true,
+    "scope": "Grid-sampled model floor only; no real-world accessibility certification"
+  }
 }
