@@ -1,4 +1,5 @@
 import './style.css';
+import { waypointLabel } from './waypoint-label.ts';
 import type { createViewer } from './viewer.ts';
 const host=document.querySelector<HTMLElement>('#viewport')!;
 const status=document.querySelector<HTMLElement>('#status')!;
@@ -20,7 +21,7 @@ async function boot(){
     const {createViewer}=await import('./viewer.ts');if(current!==attempt)return;
     viewer=createViewer({host,status:message=>{if(current!==attempt)return;status.textContent=message;loading.textContent=message;},failed:failure,
       ready(waypoints,modelNote){if(current!==attempt)return;loading.hidden=true;home.disabled=false;note.textContent=modelNote;
-        for(const point of waypoints){const button=document.createElement('button');button.type='button';button.textContent=point.label+(point.approximate?' · 근사':'');button.addEventListener('click',point.go);points.append(button);}
+        for(const point of waypoints){const button=document.createElement('button');button.type='button';button.textContent=waypointLabel(point.label,point.approximate);button.addEventListener('click',point.go);points.append(button);}
       }});
     viewer.setQuality(quality.value==='low'?'low':'auto');
   }catch(error){if(current===attempt)failure(error);}

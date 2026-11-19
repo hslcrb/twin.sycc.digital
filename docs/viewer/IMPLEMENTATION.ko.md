@@ -64,3 +64,13 @@ package-lock.json은 공식 npm 설치 결과다. node_modules/dist/.npm-cache�
 모델 담당자가 제공한 초기 GLB264,536바이트를 받아 같은 테스트를 다시 실행했다. 이번에는 skip0, 총9개가 모두 통과했다. 추가 실제모델 검사는 Three.GLTFLoader.parseAsync로 파일을 해석하고, 비어 있지 않은 bounds, 유효한 좌표, label/target/approximate 속성을 가진 waypoint를 확인한다. GPU 없이 파서와 scene graph를 검증한 것이며 브라우저 실제 렌더 성공과 동일하지 않다.
 
 최종 초기 빌드 출력은 HTML2.11KB(gzip1.26KB), CSS2.54KB(gzip1.08KB), 초기JS3.36KB(gzip1.63KB), lazy viewer632.42KB(gzip161.96KB)다. viewer500KB 경고는 그대로 남겼다. 이 숫자는 해당 빌드의 번들 크기이며 모델 다운로드264,536바이트와 구분한다. strict typecheck 및 build는 성공했다. 상태/UI는 모델 담당자의 '초기 블록아웃·과거사진·근사치수·현재성미검증' 범위에 맞춰 명확하게 표시한다.
+
+## M2 후 시각·모바일 좁은 개선
+
+배경은 불투명 단색에서 투명 canvas와 정적 CSS 하늘 gradient로 바꿨다. 위쪽 청색에서 수평선 근처 밝은 색으로 이어지지만 카메라 방향에 따라 변하는 실제 하늘 모델은 아니다. HDR 환경맵, 유리의 하늘 반사, 물리적으로 정확한 광택을 구현했다고 주장하지 않는다. 기존 hemisphere/directional 조명과 모델 재질은 보존했다. 추가 이미지 다운로드·장면 geometry·애니메이션 loop는 없다. alpha compositing 비용은 기기별로 다를 수 있어 GPU 성능 향상을 주장하지 않는다.
+
+모바일에서 여섯 waypoint가 여러 줄로 펼쳐져 장면을 가리는 문제를 줄이기 위해 한 줄 가로 스크롤로 바꿨다. 버튼은 native button과 키보드 focus를 유지하고 outline이 잘리지 않도록 여백을 둔다. 전체 패널 높이는 46svh까지이며 작은 화면·큰 글꼴에서도 세로 스크롤로 나머지 내용을 읽을 수 있게 했다. 이미 '(근사)'를 포함한 모델 label에는 다시 '· 근사'를 붙이지 않는다. 증거 표시를 삭제하는 것이 아니라 중복만 막는다.
+
+라벨 함수는 별도 작은 모듈로 분리했다. 처음에는 기존 policy 모듈에 넣었으나 초기 entry가 GLB 검증 코드까지 함께 가져오는 빌드 변화가 관찰되어 분리했다. 렌더러·검증 코드는 지연 viewer에 남는다. DPR 상한, idle frame 0, context loss 및 종료 처리에는 변화가 없다.
+
+검증 모델은 M2 1,268,656바이트, SHA256 `bfc49c4eade9bc081956207683ed171aaef950fee226120fe0bd931ff8dec342`이다. 실제 GLTFLoader bounds/waypoint 검사 포함 11/11 테스트가 skip 없이 통과했고 strict typecheck 포함 production build도 통과했다. root의 모델 검사 도구 회귀도 통과했다. 실제 브라우저 screenshot 및 모바일 GPU 실측은 이번 수정에서 수행하지 않았으므로 CSS 계약·파서·빌드 검증과 구분한다. M3는 아직 이 결과에 포함하지 않는다. 산출물 크기는 동봉 build.txt에서 확인하며 500KB viewer 경고를 그대로 유지했다.

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync,readFileSync} from 'node:fs';
 import {MODEL_URL,pixelRatio,fitDistance,finitePoint,inspectGlb} from '../src/policy.ts';
+import {waypointLabel} from '../src/waypoint-label.ts';
 import {createFrameScheduler} from '../src/scheduler.ts';
 function glb(json:object){const text=new TextEncoder().encode(JSON.stringify(json));const size=Math.ceil(text.length/4)*4;const buffer=new ArrayBuffer(20+size);const view=new DataView(buffer);view.setUint32(0,0x46546c67,true);view.setUint32(4,2,true);view.setUint32(8,buffer.byteLength,true);view.setUint32(12,size,true);view.setUint32(16,0x4e4f534a,true);const bytes=new Uint8Array(buffer,20);bytes.fill(32);bytes.set(text);return buffer;}
 test('loads exactly one embedded Blender GLB URL, never substitutes buildings',()=>{
@@ -39,4 +40,19 @@ test('even an already queued callback cannot render after disposal',()=>{
 const model=new URL('../public/models/sycc.glb',import.meta.url);
 test('production model is valid embedded GLB',{skip:!existsSync(model)},()=>{
  const file=readFileSync(model);inspectGlb(file.buffer.slice(file.byteOffset,file.byteOffset+file.byteLength));
+});
+
+test('waypoint evidence labels retain approximation exactly once',()=>{
+ assert.equal(waypointLabel('광장',true),'광장 · 근사');
+ assert.equal(waypointLabel('광장 (근사)',true),'광장 (근사)');
+ assert.equal(waypointLabel('실측 광장',false),'실측 광장');
+});
+test('sky is static CSS behind an alpha canvas, with no environment or animation claim',()=>{
+ const source=readFileSync(new URL('../src/viewer.ts',import.meta.url),'utf8');
+ const css=readFileSync(new URL('../src/style.css',import.meta.url),'utf8');
+ assert.match(source,/alpha:true/);assert.match(source,/setClearColor\(0x000000,0\)/);
+ assert.doesNotMatch(source,/scene\.background\s*=|scene\.environment\s*=/);
+ assert.match(css,/linear-gradient\(180deg/);
+ assert.match(css,/#waypoints\{flex-wrap:nowrap;overflow-x:auto/);
+ assert.match(css,/max-height:46svh;overflow-y:auto/);
 });

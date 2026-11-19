@@ -9,12 +9,13 @@ interface Options { host:HTMLElement; status:(message:string)=>void; ready:(poin
 
 
 export function createViewer({host,status,ready,failed}:Options){
-  const renderer=new THREE.WebGLRenderer({antialias:false,alpha:false,powerPreference:'low-power'});
+  const renderer=new THREE.WebGLRenderer({antialias:false,alpha:true,powerPreference:'low-power'});
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
-  renderer.setClearColor(0xe4edeb);renderer.domElement.tabIndex=0;
+  // 투명 배경은 정적 CSS 하늘을 드러낸다. CSS sky is not a reflection map.
+  renderer.setClearColor(0x000000,0);renderer.domElement.tabIndex=0;
   renderer.domElement.setAttribute('aria-label','3D 모델. 방향키 이동, 더하기와 빼기 확대, Home 전체 보기');
   host.append(renderer.domElement);
-  const scene=new THREE.Scene();scene.background=new THREE.Color(0xe4edeb);
+  const scene=new THREE.Scene();
   scene.add(new THREE.HemisphereLight(0xf4fbff,0x75846b,2.5));
   const sun=new THREE.DirectionalLight(0xfff0dc,3);sun.position.set(-80,150,80);scene.add(sun);
   const camera=new THREE.PerspectiveCamera(45,1,0.1,10000);camera.position.set(100,80,100);

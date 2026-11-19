@@ -37,3 +37,13 @@ Blender에서 `models/sycc.blend`를 열어 원본을 확인합니다. 렌더러
 - [모델 매니페스트와 해시](docs/model-manifest.json) · [객석도 판독](docs/seat-plan-derived.json)
 - 첫 모델에는 관찰 기반 외부 골격과 온누리아트홀의 근사 전실·무대·객석이 포함됩니다. 2017년 공개 객석도를 기준으로 일반 번호석 519개와 휠체어 위치 6곳을 표기합니다. 현재 시설 치수나 관람 동선의 인증 자료가 아닙니다.
 - 전체 GLB는 1,268,656바이트입니다. 기본 장면 23,808개 삼각형과 19개 드로 프리미티브는 GLB 구조를 분석한 수이며 실제 화면 드로콜·모바일 FPS가 아닙니다.
+
+### 모델 편집과 스틸 렌더
+
+네이티브 파일은 **Blender 5.3.0**에서 제작·검증했습니다. Blender 4.3.2에서는 이 버전의 압축 원본을 정상적으로 열 수 없었으므로 5.3에서 편집하세요. GLB 뷰어는 Blender 설치 없이 실행할 수 있습니다.
+
+```sh
+blender -b models/sycc.blend -t 4 -P blender/scripts/render_still.py -- --waypoint Overview --out renders/recheck.png --width 900 --samples 8
+```
+
+위 명령은 저장된 모델을 다시 쓰지 않고 지정 시점에서 PNG만 생성합니다.
