@@ -6,7 +6,7 @@
 |---|---|---|---|
 | SY-01 | [재단 시설 이용안내](https://www.syf.or.kr/web/page.do?menuIdx=360) · [위치](https://www.syf.or.kr/web/page.do?menuIdx=362) | 권광로 293, 연수동·온누리아트홀·새천년수영장·꿈의체육관과 공개 시설의 종류 | 시설 목록·층수의 근거. 평면·실측 좌표나 현재 외관 전체가 아님 |
 | SY-02 | [재단 예약 사이트 시설안내](https://yeyak.syf.or.kr/www/102) | 5개 동 표기와 시설 분류의 교차 확인 | 재단 본사이트의 연면적 19,162.86㎡와 이 페이지의 17,462.67㎡를 같은 산정 기준으로 쓰지 않음 |
-| SY-03 | [온누리아트홀 객석·무대 자료](https://www.syf.or.kr/web/board.do?bbsIdx=48618&menuIdx=331) | 2017년 자료의 1·2층 객석도, 무대 평면 및 측면 자료 유무 | 파일명에 519석. 현재 525석 안내와 상충. 원본 재배포 권리 미확인 |
+| SY-03 | [온누리아트홀 객석·무대 자료](https://www.syf.or.kr/web/board.do?bbsIdx=48618&menuIdx=331) | 2017년 자료의 1·2층 객석도, 무대 평면 및 측면 자료 유무 | 번호석 519석과 별도 휠체어 6자리. 아래 직접 판독 기록 참조. 원본 재배포 권리 미확인 |
 | SY-04 | [재단 대관 안내](https://www.syf.or.kr/web/page.do?menuIdx=363) · [수원문화지도](https://www.swcf.or.kr/swdb/?p=8_view&page=8&reqIdx=202011091053071341&schCate1=F&schCate2=24) | 온누리아트홀 525석 및 공개 객석·무대, 은하수홀 92석 안내 | 모델에 표시한 좌석 및 행·열과 동일하다는 뜻이 아님 |
 | SY-05 | [재단 2026년 3월 시설·프로그램 소개](https://www.syf.or.kr/web/board.do?bbsIdx=70462&menuIdx=320) | 최신 시설 조사 기준 및 11개 홍보 이미지의 소재 | 게시일을 각각의 사진 촬영일로 사용하지 않음 |
 | SY-06 | [수원시 인터넷신문 수영장 리모델링 보도](https://news.suwon.go.kr/?p=40&reqIdx=202603241758449662&viewMode=view) | 2026년 수영장 개보수 이후 시각 기록 | 시민기자 사진, 미수록 내부 치수는 미확인 |
@@ -24,3 +24,7 @@
 
 - [Blender glTF 내보내기](https://docs.blender.org/manual/en/latest/addons/scene_gltf2.html): 변환, 텍스처, 재질과 메타데이터.
 - [Three.js WebGLRenderer](https://threejs.org/docs/pages/WebGLRenderer.html): 캔버스 크기와 픽셀 비율. 생산성 실측 결과를 대신하지 않음.
+
+## SY-03 객석도 이미지 직접 확인
+
+2017년 게시물의 [1층 객석도](https://www.syf.or.kr/boardImageStreamOut.do?file_idx=39736)와 [2층 객석도](https://www.syf.or.kr/boardImageStreamOut.do?file_idx=39737)를 실제 열어 가·나·다 구획의 번호를 읽었다. 1층 번호석은 **113 + 130 + 113 = 356석**, 뒤쪽 별도 휠체어 표기는 **6자리**다. 2층 번호석은 **54 + 55 + 54 = 163석**이다. 두 층의 번호석 **519석**에 휠체어 공간을 포함하면 **525자리**가 된다. 따라서 역사 도면 파일명의 519와 현행 안내의 525는 집계 기준 차이로 설명된다. 이 산술 일치는 현행 객석의 정확한 설치 배치·치수와 변경 이력까지 입증하지 않는다. 저작권 미확인 원본 이미지는 저장소에 수록하지 않았다.

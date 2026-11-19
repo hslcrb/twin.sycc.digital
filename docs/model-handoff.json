@@ -1,0 +1,61 @@
+{
+  "files": [
+    {
+      "path": "blender/scripts/build_sycc.py",
+      "bytes": 14002,
+      "sha256": "16879ef6832a0430da09a59fc9c603ce38af39e3805a9ee6c7984793b35d8bc4"
+    },
+    {
+      "path": "blender/scripts/verify_sycc.py",
+      "bytes": 3182,
+      "sha256": "923a2b22a362ab5f1fb54c2e45fa1b1ff3ceadaedd3f314a628dfa18e1677808"
+    },
+    {
+      "path": "models/sycc.blend",
+      "bytes": 323840,
+      "sha256": "290d40aa1cebd9cada23beb52f3fa3eeac813ef4a77106fe02af1e32fcffdeb2"
+    },
+    {
+      "path": "public/models/sycc.glb",
+      "bytes": 1268656,
+      "sha256": "bfc49c4eade9bc081956207683ed171aaef950fee226120fe0bd931ff8dec342"
+    },
+    {
+      "path": "docs/model-manifest.json",
+      "bytes": 2084,
+      "sha256": "99f5647ce810ec7edbb5afdc5de88d851b74f1d1ed85f27ef1775e65dad9a4f2"
+    },
+    {
+      "path": "docs/model-verification.json",
+      "bytes": 515,
+      "sha256": "c0432ca77b2b29f5daa47537c36944285b728c178fedb5747de8496fd54b82a9"
+    },
+    {
+      "path": "docs/seat-plan-derived.json",
+      "bytes": 1907,
+      "sha256": "df4ac3df6f29815f2070d4ff6a4541c27c648a67c13937fb76e36d01a5387c05"
+    },
+    {
+      "path": "docs/MODEL-PHASES.ko.md",
+      "bytes": 6649,
+      "sha256": "aaed720859e5566663cf6441f388f0bc86e689248ba7d41e121ec90b952ffc49"
+    }
+  ],
+  "exclude": [
+    "models/sycc.blend1",
+    "third-party reference images"
+  ],
+  "renderDeliverySeparate": [
+    "renders/overview.png",
+    "renders/onnuri-entry.png",
+    "renders/onnuri-seats.png"
+  ],
+  "verified": "native/GLB hash, triangle count,519 seat geometry,6 wheelchair-space geometry,6 waypoint coordinate parity",
+  "notVerified": [
+    "survey scale",
+    "current exterior match",
+    "current seat arrangement",
+    "safe walking",
+    "actual device FPS"
+  ]
+}

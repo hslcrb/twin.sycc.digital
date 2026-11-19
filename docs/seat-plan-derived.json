@@ -1,0 +1,122 @@
+{
+  "source": "S07-2017",
+  "numberedSeats": 519,
+  "wheelchairSpaces": 6,
+  "combinedCapacity": 525,
+  "groups": [
+    {
+      "floor": 1,
+      "group": "ga",
+      "rowCounts": [
+        8,
+        8,
+        8,
+        8,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "numberedSeats": 113,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    },
+    {
+      "floor": 1,
+      "group": "da",
+      "rowCounts": [
+        8,
+        8,
+        8,
+        8,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "numberedSeats": 113,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    },
+    {
+      "floor": 1,
+      "group": "na",
+      "rowCounts": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        11,
+        12,
+        11,
+        12,
+        11,
+        12,
+        11
+      ],
+      "numberedSeats": 130,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    },
+    {
+      "floor": 2,
+      "group": "ga",
+      "rowCounts": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        3,
+        3,
+        3
+      ],
+      "numberedSeats": 54,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    },
+    {
+      "floor": 2,
+      "group": "da",
+      "rowCounts": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        3,
+        3,
+        3
+      ],
+      "numberedSeats": 54,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    },
+    {
+      "floor": 2,
+      "group": "na",
+      "rowCounts": [
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "numberedSeats": 55,
+      "source": "S07-2017",
+      "dimensions": "approximate"
+    }
+  ],
+  "status": "Historical 2017 arrangement; latest arrangement and actual measurements not verified"
+}

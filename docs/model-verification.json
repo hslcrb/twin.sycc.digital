@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "nativeMeshes": 19,
+  "glbMeshes": 19,
+  "trianglesBoth": 23808,
+  "numberedSeatGeometryCount": 519,
+  "wheelchairClearSpaceGeometryCount": 6,
+  "waypointParity": [
+    "Waypoint_Overview",
+    "Waypoint_Plaza",
+    "Waypoint_OnnuriEntrance",
+    "Waypoint_OnnuriLobby",
+    "Waypoint_OnnuriAudience",
+    "Waypoint_OnnuriBalcony"
+  ],
+  "embeddedExternalImages": 0,
+  "materials": 12,
+  "scope": "Export contract only, not survey accuracy, walkability, current facility match or browser FPS."
+}

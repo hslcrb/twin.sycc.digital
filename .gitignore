@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.npm-cache/
+*.log
+
+*.blend[1-9]
+.cache/

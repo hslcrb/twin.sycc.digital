@@ -14,3 +14,26 @@
 ## 구조
 
 **단일 Blender 마스터 → GLB → TypeScript/Three.js 뷰어.** 건물과 부지 모델의 편집 원본은 Blender 한 파일입니다. 뷰어는 같은 장면의 파생 산출물을 읽으며, 브라우저에서 다른 건물을 그려 대체하지 않습니다.
+
+## 로컬 실행
+
+Node.js 22.12 이상, npm 필요. Blender 원본과 웹용 GLB는 저장소에 있으며 기본 웹 빌드에서 Blender를 새로 실행할 필요는 없습니다.
+
+```sh
+npm ci
+npm run dev
+npm run typecheck
+npm test
+npm run test:model
+npm run inspect:model
+npm run build
+```
+
+Blender에서 `models/sycc.blend`를 열어 원본을 확인합니다. 렌더러의 파일 진입점은 `public/models/sycc.glb` 하나입니다. 관측용 카메라 바로가기는 모델에 포함된 지점이며 검증된 보행 경로나 운영 시설 안내가 아닙니다.
+
+## 첫 모델 / M1 + M2 초기 패스
+
+- [Blender 모델 개발기](docs/MODEL-PHASES.ko.md) · [뷰어 개발기](docs/viewer/IMPLEMENTATION.ko.md)
+- [모델 매니페스트와 해시](docs/model-manifest.json) · [객석도 판독](docs/seat-plan-derived.json)
+- 첫 모델에는 관찰 기반 외부 골격과 온누리아트홀의 근사 전실·무대·객석이 포함됩니다. 2017년 공개 객석도를 기준으로 일반 번호석 519개와 휠체어 위치 6곳을 표기합니다. 현재 시설 치수나 관람 동선의 인증 자료가 아닙니다.
+- 전체 GLB는 1,268,656바이트입니다. 기본 장면 23,808개 삼각형과 19개 드로 프리미티브는 GLB 구조를 분석한 수이며 실제 화면 드로콜·모바일 FPS가 아닙니다.

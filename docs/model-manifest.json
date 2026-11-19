@@ -1,0 +1,106 @@
+{
+  "phase": "M1 blockout + M2 historical seat topology",
+  "modelDimensionStatus": "All model distances approximate, metres for navigation only; no survey",
+  "native": {
+    "path": "models/sycc.blend",
+    "bytes": 323840,
+    "sha256": "290d40aa1cebd9cada23beb52f3fa3eeac813ef4a77106fe02af1e32fcffdeb2"
+  },
+  "glb": {
+    "path": "public/models/sycc.glb",
+    "bytes": 1268656,
+    "sha256": "bfc49c4eade9bc081956207683ed171aaef950fee226120fe0bd931ff8dec342"
+  },
+  "waypoints": [
+    {
+      "name": "Waypoint_Overview",
+      "eyeGLTF": [
+        104,
+        81,
+        121
+      ],
+      "targetGLTF": [
+        0,
+        7,
+        -15
+      ],
+      "label": "전체 배치 · 역사사진 기반 근사"
+    },
+    {
+      "name": "Waypoint_Plaza",
+      "eyeGLTF": [
+        10,
+        2.1,
+        47
+      ],
+      "targetGLTF": [
+        9,
+        7,
+        -14
+      ],
+      "label": "광장 · 근사"
+    },
+    {
+      "name": "Waypoint_OnnuriEntrance",
+      "eyeGLTF": [
+        39,
+        2.1,
+        16
+      ],
+      "targetGLTF": [
+        39,
+        6,
+        -5
+      ],
+      "label": "온누리 입구 · 관찰형 근사"
+    },
+    {
+      "name": "Waypoint_OnnuriLobby",
+      "eyeGLTF": [
+        39,
+        1.75,
+        -10
+      ],
+      "targetGLTF": [
+        39,
+        2,
+        10
+      ],
+      "label": "온누리 전실 · 미실측 근사"
+    },
+    {
+      "name": "Waypoint_OnnuriAudience",
+      "eyeGLTF": [
+        39,
+        4.1,
+        -18.5
+      ],
+      "targetGLTF": [
+        39,
+        3.8,
+        -39
+      ],
+      "label": "온누리 객석 · 2017 도면 기반 근사"
+    },
+    {
+      "name": "Waypoint_OnnuriBalcony",
+      "eyeGLTF": [
+        39,
+        8.6,
+        -17.3
+      ],
+      "targetGLTF": [
+        39,
+        3.5,
+        -39
+      ],
+      "label": "온누리 발코니 · 2017 도면 기반 근사"
+    }
+  ],
+  "objects": 28,
+  "meshObjects": 19,
+  "triangles": 23808,
+  "provenance": "first-party",
+  "license": "CC-BY-4.0",
+  "attribution": "twin.sycc.digital contributors"
+}
